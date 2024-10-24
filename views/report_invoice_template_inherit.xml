@@ -1,0 +1,19 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Heredar la vista del reporte de facturas de l10n_cl -->
+    <template id="report_invoice_inherit" inherit_id="l10n_cl.report_invoice_document">
+
+        <!-- Modificar el borde de la caja -->
+        <xpath expr="//div[contains(@class, 'border-dark')]" position="attributes">
+            <attribute name="class">border border-4</attribute>
+            <attribute name="style">border-color: red;</attribute>
+        </xpath>
+
+        <!-- Cambiar "VAT" por "IVA" en el subtotal de impuestos -->
+        <xpath expr="//td[t-out='"VAT %s" % subtotal_amounts["vat_percent"]']" position="attributes">
+            <attribute name="t-out">'IVA %s' % subtotal_amounts['vat_percent']</attribute>
+        </xpath>
+
+    </template>
+</odoo>
