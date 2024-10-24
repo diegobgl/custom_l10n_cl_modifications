@@ -1,5 +1,5 @@
 <odoo>
-    <template id="tax_totals_widget" inherit_id="account.document_tax_totals" primary="True">
+    <template id="tax_totals_widget" inherit_id="l10n_cl.document_tax_totals" primary="True">
         <!-- Reemplazamos el VAT por IVA -->
         <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
             <t t-set="subtotal_amounts" t-value="o._l10n_cl_get_amounts()"/>
