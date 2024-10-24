@@ -4,11 +4,10 @@
     <template id="report_invoice_inherit" inherit_id="account.report_invoice_document">
 
         <!-- Modificar el borde alrededor del bloque de RUT a rojo -->
-        <xpath expr="//div[@name='right-upper-side' and @class='col-4']" position="replace">
+        <xpath expr="//div[@name='right-upper-side' and contains(@class, 'col')]" position="replace">
             <div name="right-upper-side" class="col-4">
                 <div class="row">
                     <div name="right-upper-side" class="col-12">
-                        <!-- Cambiamos el borde de negro a rojo -->
                         <div class="row border border-4" style="border-color: red;">
                             <div class="col-12 text-center">
                                 <h6 style="color: black;">
@@ -31,6 +30,7 @@
                 </div>
             </div>
         </xpath>
+
 
 
 
