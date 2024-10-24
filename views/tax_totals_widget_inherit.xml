@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- Herencia del template para reemplazar VAT por IVA -->
-    <template id="tax_totals_widget_inherit" inherit_id="account.document_tax_totals" primary="True">
+    <template id="tax_totals_widget_inherit" inherit_id="account.document_tax_totals">
         
         <!-- Reemplazar el texto "VAT" por "IVA" en el subtotal de impuestos -->
-        <xpath expr="//t[t-if='subtotal_amounts[&quot;vat_amount&quot;] != 0.0']" position="replace">
+        <xpath expr="//tr[td[contains(.,'VAT')]]" position="replace">
             <t t-if="subtotal_amounts['vat_amount'] != 0.0">
                 <tr>
                     <td t-out="'IVA %s' % subtotal_amounts['vat_percent']"/>
