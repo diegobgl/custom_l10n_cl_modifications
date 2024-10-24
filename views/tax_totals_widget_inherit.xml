@@ -4,7 +4,7 @@
     <template id="tax_totals_widget_inherit" inherit_id="l10n_cl.tax_totals_widget">
 
         <!-- Reemplazar el bloque completo para cambiar "VAT" por "IVA" -->
-        <xpath expr="//tr[td[contains(., 'VAT')]]" position="replace">
+        <xpath expr="//t[t-if='subtotal_amounts[&quot;vat_amount&quot;] != 0.0']" position="replace">
             <t t-if="subtotal_amounts['vat_amount'] != 0.0">
                 <tr>
                     <td t-out="'IVA %s' % subtotal_amounts['vat_percent']"/>
