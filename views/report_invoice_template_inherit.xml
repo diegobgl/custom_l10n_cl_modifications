@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- Herencia de la vista del reporte de facturas de account -->
-    <template id="report_invoice_inherit" inherit_id="account.report_invoice_document">
+    <template id="report_invoice_inherit" inherit_id="l10n_cl.report_invoice_document">
 
         <!-- Modificar el borde alrededor del bloque de RUT a rojo -->
         <xpath expr="//div[contains(@name, 'right-upper-side') and contains(@class, 'col')]" position="replace">
