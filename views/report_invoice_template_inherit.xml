@@ -10,17 +10,6 @@
         </xpath>
 
     </template>
-
-    <!-- Herencia del template account.document_tax_totals para modificar el texto VAT a IVA -->
-    <template id="tax_totals_widget_inherit" inherit_id="account.document_tax_totals">
-
-        <!-- Cambiar "VAT" por "IVA" en el subtotal de impuestos -->
-        <xpath expr="//td[contains(text(), 'VAT')]" position="replace">
-            <td t-out="'IVA %s' % subtotal_amounts['vat_percent']"/>
-        </xpath>
-
-    </template>
-
 </odoo>
 
  
