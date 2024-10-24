@@ -11,9 +11,9 @@
 
     </template>
 
-        <!-- Herencia del template account.document_tax_totals para modificar el texto VAT a IVA -->
+    <!-- Herencia del template account.document_tax_totals para modificar el texto VAT a IVA -->
     <template id="tax_totals_widget_inherit" inherit_id="account.document_tax_totals">
-        
+
         <!-- Cambiar "VAT" por "IVA" en el subtotal de impuestos -->
         <xpath expr="//t[t-if='subtotal_amounts[&quot;vat_amount&quot;] != 0.0']" position="replace">
             <t t-if="subtotal_amounts['vat_amount'] != 0.0">
