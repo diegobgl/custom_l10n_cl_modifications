@@ -1,36 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Herencia de la vista del reporte de facturas de account -->
-    <template id="report_invoice_inherit" inherit_id="l10n_cl.report_invoice_document">
+    <!-- Herencia del template custom_header para modificar el borde -->
+    <template id="custom_header_inherit" inherit_id="l10n_cl.custom_header">
 
         <!-- Modificar el borde alrededor del bloque de RUT a rojo -->
-        <xpath expr="//div[contains(@name, 'right-upper-side') and contains(@class, 'col-lg')]" position="replace">
-            <div name="right-upper-side" class="col-4">
-                <div class="row">
-                    <div name="right-upper-side" class="col-12">
-                        <div class="row border border-4" style="border-color: red;">
-                            <div class="col-12 text-center">
-                                <h6 style="color: black;">
-                                    <strong>
-                                        <br/>
-                                        <span style="font-family:arial; line-height: 180%;">RUT:</span>
-                                        <t t-if="o.company_id.partner_id.vat">
-                                            <span style="font-family:arial;" t-out="o.company_id.partner_id._format_dotted_vat_cl(o.company_id.partner_id.vat)"/>
-                                        </t>
-                                        <br/>
-                                        <span style="font-family:arial;" class="text-uppercase" t-out="report_name"/>
-                                        <br/>
-                                        <span>Nº:</span>
-                                        <span style="font-family:arial;line-height: 200%;" t-out="report_number"/>
-                                    </strong>
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <xpath expr="//div[contains(@name, 'right-upper-side')]/div/div[@class='row border border-4 border-dark']" position="attributes">
+            <attribute name="style">border-color: red;</attribute>
+            <attribute name="class" remove="border-dark"/>
         </xpath>
 
+    </template>
+
+        <!-- Herencia del template account.document_tax_totals para modificar el texto VAT a IVA -->
+    <template id="tax_totals_widget_inherit" inherit_id="account.document_tax_totals">
+        
         <!-- Cambiar "VAT" por "IVA" en el subtotal de impuestos -->
         <xpath expr="//t[t-if='subtotal_amounts[&quot;vat_amount&quot;] != 0.0']" position="replace">
             <t t-if="subtotal_amounts['vat_amount'] != 0.0">
@@ -43,4 +26,7 @@
         </xpath>
 
     </template>
+
 </odoo>
+
+ 
