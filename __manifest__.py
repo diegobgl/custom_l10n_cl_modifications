@@ -14,7 +14,7 @@
     'depends': ['l10n_cl'],
     'data': [
         'views/report_invoice_template_inherit.xml',
-        'views/tax_totals_widget_inherit.xml'
+       # 'views/tax_totals_widget_inherit.xml'
     ],
     'installable': True,
     'auto_install': False,
