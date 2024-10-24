@@ -9,7 +9,7 @@
         1. El color del borde de la caja que contiene el RUT y la factura.
         2. Cambia "VAT" por "IVA" en los detalles de impuestos.
     ''',
-    'author': 'diego Gajardo',
+    'author': 'Diego Gajardo',
     'website': 'http://www.Holdconet.cl',
     'depends': ['l10n_cl'],
     'data': [
