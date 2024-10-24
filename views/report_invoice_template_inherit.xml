@@ -9,9 +9,15 @@
             <attribute name="style">border-color: red;</attribute>
         </xpath>
 
-        <!-- Cambiar "VAT" por "IVA" en el subtotal de impuestos -->
-        <xpath expr="//td[t-out='\"VAT %s\" % subtotal_amounts[\"vat_percent\"]']" position="attributes">
-            <attribute name="t-out">'IVA %s' % subtotal_amounts['vat_percent']</attribute>
+        <!-- Reemplazar la sección del subtotal de impuestos cambiando "VAT" por "IVA" -->
+        <xpath expr="//t[t-if='subtotal_amounts[\"vat_amount\"] != 0.0']" position="replace">
+            <t t-if="subtotal_amounts['vat_amount'] != 0.0">
+                <tr>
+                    <td t-out="'IVA %s' % subtotal_amounts['vat_percent']"/>
+                    <td class="text-end" t-out="subtotal_amounts['vat_amount']"
+                        t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
+                </tr>
+            </t>
         </xpath>
 
     </template>
