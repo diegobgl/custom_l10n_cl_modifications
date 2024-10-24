@@ -4,7 +4,7 @@
     <template id="report_invoice_inherit" inherit_id="l10n_cl.report_invoice_document">
 
         <!-- Modificar el borde alrededor del bloque de RUT a rojo -->
-        <xpath expr="//div[contains(@name, 'right-upper-side') and contains(@class, 'col')]" position="replace">
+        <xpath expr="//div[contains(@class, 'right-upper-side') and contains(@class, 'col')]" position="replace">
             <div name="right-upper-side" class="col-4">
                 <div class="row">
                     <div name="right-upper-side" class="col-12">
