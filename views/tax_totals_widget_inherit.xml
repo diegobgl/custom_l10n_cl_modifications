@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- Herencia del template para reemplazar el bloque de VAT -->
-    <template id="tax_totals_widget_inherit" inherit_id="l10n_cl.tax_totals_widget">
+    <template id="tax_totals_widget_inherit" inherit_id="l10n_cl.tax_totals_widget" primary="True">
 
         <!-- Reemplazar el bloque completo para cambiar "VAT" por "IVA" -->
-            <xpath expr="//td[@class='vat-class']" position="replace">
-                <t t-if="subtotal_amounts['vat_amount'] != 0.0">
-                    <tr>
-                        <td t-out="'IVA %s' % subtotal_amounts['vat_percent']"/>
-                        <td class="text-end" t-out="subtotal_amounts['vat_amount']"
-                            t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
-                    </tr>
-                </t>
-            </xpath>
+        <xpath expr="//t[t-if='subtotal_amounts[&quot;vat_amount&quot;] != 0.0']" position="replace">
+            <t t-if="subtotal_amounts['vat_amount'] != 0.0">
+                <tr>
+                    <td t-out="'IVA %s' % subtotal_amounts['vat_percent']"/>
+                    <td class="text-end" t-out="subtotal_amounts['vat_amount']"
+                        t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
+                </tr>
+            </t>
+        </xpath>
 
     </template>
 </odoo>
