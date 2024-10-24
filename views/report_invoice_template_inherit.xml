@@ -4,7 +4,7 @@
     <template id="custom_header_inherit" inherit_id="l10n_cl.custom_header">
 
         <!-- Modificar el borde alrededor del bloque de RUT a rojo -->
-        <xpath expr="//div[contains(@name, 'right-upper-side')]/div/div[@class='row border border-4 border-dark']" position="attributes">
+        <xpath expr="//div[@name='right-upper-side']//div[contains(@class, 'border-dark')]" position="attributes">
             <attribute name="style">border-color: red;</attribute>
             <attribute name="class" remove="border-dark"/>
         </xpath>
