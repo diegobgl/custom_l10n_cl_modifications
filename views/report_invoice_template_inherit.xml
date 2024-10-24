@@ -4,7 +4,7 @@
     <template id="report_invoice_inherit" inherit_id="account.report_invoice_document">
 
         <!-- Modificar el borde alrededor del bloque de RUT a rojo -->
-        <xpath expr="//div[contains(@class, 'border-dark')]" position="attributes">
+        <xpath expr="//div[@class='col-12 text-center']" position="attributes">
             <attribute name="class">border border-4</attribute>
             <attribute name="style">border-color: red;</attribute>
         </xpath>
