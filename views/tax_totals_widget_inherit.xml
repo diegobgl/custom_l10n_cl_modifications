@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Reemplazo completo del template account.document_tax_totals -->
-    <template id="tax_totals_widget" inherit_id="l10n_cl.document_tax_totals" primary="True">
-        <!-- Recorre los subtotales de impuestos -->
+    <template id="tax_totals_widget" inherit_id="account.document_tax_totals" primary="True">
+        <!-- Reemplazamos el VAT por IVA -->
         <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
             <t t-set="subtotal_amounts" t-value="o._l10n_cl_get_amounts()"/>
             <t t-set="withholdings" t-value="o._l10n_cl_get_withholdings()"/>
@@ -11,9 +9,7 @@
             <t t-if="subtotal_amounts['subtotal_amount_taxable'] != 0.0">
                 <tr class="border-black is-subtotal">
                     <td><strong>Monto Neto</strong></td>
-                    <td class="text-end oe_subtotal_footer_separator" 
-                        t-out="subtotal_amounts['subtotal_amount_taxable']" 
-                        t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
+                    <td class="text-end oe_subtotal_footer_separator" t-out="subtotal_amounts['subtotal_amount_taxable']" t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
                 </tr>
             </t>
 
@@ -21,18 +17,15 @@
             <t t-if="subtotal_amounts['subtotal_amount_exempt'] != 0.0">
                 <tr class="border-black is-subtotal">
                     <td><strong>Monto Exento</strong></td>
-                    <td class="text-end oe_subtotal_footer_separator" 
-                        t-out="subtotal_amounts['subtotal_amount_exempt']"
-                        t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
+                    <td class="text-end oe_subtotal_footer_separator" t-out="subtotal_amounts['subtotal_amount_exempt']" t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
                 </tr>
             </t>
 
-            <!-- IVA (cambio de VAT a IVA) -->
+            <!-- IVA (antes VAT) -->
             <t t-if="subtotal_amounts['vat_amount'] != 0.0">
                 <tr>
                     <td t-out="'IVA %s' % subtotal_amounts['vat_percent']"/>
-                    <td class="text-end" t-out="subtotal_amounts['vat_amount']"
-                        t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
+                    <td class="text-end" t-out="subtotal_amounts['vat_amount']" t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
                 </tr>
             </t>
 
@@ -40,18 +33,16 @@
             <t t-foreach="withholdings" t-as="wh">
                 <tr>
                     <td t-out="'%s (base %s)' % (wh['tax_name'], o._format_lang_totals(wh['tax_base'], subtotal_amounts['main_currency']))"/>
-                    <td class="text-end" t-out="wh['tax_amount']" 
-                        t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
+                    <td class="text-end" t-out="wh['tax_amount']" t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
                 </tr>
             </t>
         </t>
 
-        <!-- Total -->
+        <!-- Total actualizado -->
         <tr class="border-black o_total">
             <td><strong>Total</strong></td>
             <td class="text-end">
-                <span t-out="subtotal_amounts['total_amount']" 
-                      t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
+                <span t-out="subtotal_amounts['total_amount']" t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
             </td>
         </tr>
     </template>

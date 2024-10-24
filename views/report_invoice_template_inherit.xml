@@ -3,13 +3,11 @@
     <!-- Herencia del template custom_header para modificar el borde -->
     <template id="custom_header_inherit" inherit_id="l10n_cl.custom_header">
 
-        <!-- Modificar el borde alrededor del bloque de RUT a rojo -->
+        <!-- Modificar el borde alrededor del bloque de RUT a border-danger -->
         <xpath expr="//div[@name='right-upper-side']//div[contains(@class, 'border-dark')]" position="attributes">
-            <attribute name="style">border-color: red;</attribute>
             <attribute name="class" remove="border-dark"/>
+            <attribute name="class" add="border-danger"/>
         </xpath>
 
     </template>
 </odoo>
-
- 
