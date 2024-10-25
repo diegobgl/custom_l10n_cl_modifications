@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- Reemplazo completo del template para cambiar "VAT" por "IVA" -->
-    <template id="tax_totals_widget_inherit" inherit_id="l10n_cl.tax_totals_widget">
+    <!--template id="tax_totals_widget_inherit" inherit_id="l10n_cl.tax_totals_widget">
         <xpath expr="//t" position="replace">
             <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
                 <t t-set="subtotal_amounts" t-value="o._l10n_cl_get_amounts()"/>
@@ -43,5 +43,33 @@
                 </td>
             </tr>
         </xpath>
+    </template-->
+
+        <!-- Herencia del template para reemplazar el bloque de VAT y asegurar que el total se muestra -->
+    <template id="tax_totals_widget_inherit" inherit_id="l10n_cl.tax_totals_widget">
+
+        <!-- Reemplazar el bloque completo para cambiar "VAT" por "IVA" -->
+        <xpath expr="//t[t-if='subtotal_amounts[&quot;vat_amount&quot;] != 0.0']" position="replace">
+            <t t-if="subtotal_amounts['vat_amount'] != 0.0">
+                <tr>
+                    <td t-out="'IVA %s' % subtotal_amounts['vat_percent']"/>
+                    <td class="text-end" t-out="subtotal_amounts['vat_amount']"
+                        t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
+                </tr>
+            </t>
+        </xpath>
+
+        <!-- Asegurarse de que el total se muestra -->
+        <xpath expr="//tr[@class='border-black o_total']" position="replace">
+            <tr class="border-black o_total">
+                <td><strong>Total</strong></td>
+                <td class="text-end">
+                    <span t-out="subtotal_amounts['total_amount']"
+                          t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
+                </td>
+            </tr>
+        </xpath>
+
     </template>
+
 </odoo>
