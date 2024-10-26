@@ -11,6 +11,11 @@
             <attribute name="style" add="border-color: red !important;"/>
         </xpath>
 
+                <!-- Modificar el color del h6 a rojo apuntando de forma específica -->
+        <xpath expr="//div[@name='right-upper-side']//h6[contains(@style, 'color: black')]" position="attributes">
+            <attribute name="style" replace="color: red !important;"/>
+        </xpath>
+
     </template>
 
     
