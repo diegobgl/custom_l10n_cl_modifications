@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- Reemplazo completo del template de tax_totals_widget de l10n_cl -->
-    <template id="tax_totals_widget_inherit" inherit_id="l10n_cl.tax_totals_widget" primary="True">
+    <template id="tax_totals_widget_inherit" inherit_id="account.tax_totals_widget" primary="True">
 
         <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
             <t t-set="subtotal_amounts" t-value="o._l10n_cl_get_amounts()"/>
