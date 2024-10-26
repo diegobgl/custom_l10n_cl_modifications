@@ -11,5 +11,10 @@
             <attribute name="style" add="border-color: red !important;"/>
         </xpath>
 
+        <xpath expr="//div[@name='right-upper-side']//h6" position="attributes">
+            <attribute name="style" add="color: red !important;"/>
+        </xpath>
+
+
     </template>
 </odoo>
