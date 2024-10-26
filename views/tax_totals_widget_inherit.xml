@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Reemplazo completo del template de tax_totals_widget de l10n_cl -->
-    <template id="tax_totals_widget_inherit" inherit_id="account.tax_totals_widget" primary="True">
+
+    <!-- Reemplazo completo del template l10n_cl.tax_totals_widget -->
+    <template id="tax_totals_widget_inherit" inherit_id="l10n_cl.tax_totals_widget" primary="True">
 
         <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
             <t t-set="subtotal_amounts" t-value="o._l10n_cl_get_amounts()"/>
@@ -50,7 +51,7 @@
 
         <!-- Monto Total (antes Total) -->
         <tr class="border-black o_total">
-            <td><strong>Total</strong></td>
+            <td><strong>Monto Total</strong></td>
             <td class="text-end">
                 <span t-out="subtotal_amounts['total_amount']" 
                       t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
@@ -58,4 +59,5 @@
         </tr>
 
     </template>
+
 </odoo>
