@@ -13,7 +13,7 @@
     'depends': ['l10n_cl'],
     'data': [
         'views/report_invoice_template_inherit.xml',
-        #'views/report_invoice_template_inherit_red_text.xml'
+        'views/report_invoice_template_inherit_red_text.xml'
         #'views/tax_totals_widget_inherit.xml'
     ],
     'installable': True,
