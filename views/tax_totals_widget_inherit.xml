@@ -3,52 +3,15 @@
     <!-- Herencia del template para cambiar VAT por IVA y Total por Monto Total -->
     <template id="tax_totals_widget_inherit" inherit_id="l10n_cl.tax_totals_widget">
 
-        <!-- Reemplazar el bloque completo -->
-        <xpath expr="//t[t-foreach='tax_totals[&quot;subtotals&quot;]']" position="replace">
-            <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
-                <t t-set="subtotal_amounts" t-value="o._l10n_cl_get_amounts()"/>
-                <t t-set="withholdings" t-value="o._l10n_cl_get_withholdings()"/>
-                
-                <!-- Monto Neto -->
-                <t t-if="subtotal_amounts['subtotal_amount_taxable'] != 0.0">
-                    <tr class="border-black is-subtotal">
-                        <td><strong>Monto Neto</strong></td>
-                        <td class="text-end oe_subtotal_footer_separator" t-out="subtotal_amounts['subtotal_amount_taxable']" t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
-                    </tr>
-                </t>
-                
-                <!-- Monto Exento -->
-                <t t-if="subtotal_amounts['subtotal_amount_exempt'] != 0.0">
-                    <tr class="border-black is-subtotal">
-                        <td><strong>Monto Exento</strong></td>
-                        <td class="text-end oe_subtotal_footer_separator" t-out="subtotal_amounts['subtotal_amount_exempt']" t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
-                    </tr>
-                </t>
-
-                <!-- IVA (antes VAT) -->
-                <t t-if="subtotal_amounts['vat_amount'] != 0.0">
-                    <tr>
-                        <td t-out="'IVA %s' % subtotal_amounts['vat_percent']"/>
-                        <td class="text-end" t-out="subtotal_amounts['vat_amount']" t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
-                    </tr>
-                </t>
-
-                <!-- Retenciones -->
-                <t t-foreach="withholdings" t-as="wh">
-                    <tr>
-                        <td t-out="'%s (base %s)' % (wh['tax_name'], o._format_lang_totals(wh['tax_base'], subtotal_amounts['main_currency'])"/>
-                        <td class="text-end" t-out="wh['tax_amount']" t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
-                    </tr>
-                </t>
-            </t>
-
-            <!-- Monto Total (antes Total) -->
-            <tr class="border-black o_total">
-                <td><strong>Monto Total</strong></td>
-                <td class="text-end">
-                    <span t-out="subtotal_amounts['total_amount']" t-options="{'widget': 'monetary', 'display_currency': subtotal_amounts['main_currency']}"/>
-                </td>
-            </tr>
+        <!-- Cambiar "VAT" por "IVA" -->
+        <xpath expr="//td[contains(text(), 'VAT')]" position="replace">
+            <td t-out="'IVA %s' % subtotal_amounts['vat_percent']"/>
         </xpath>
+
+        <!-- Cambiar "Total" por "Monto Total" -->
+        <xpath expr="//td[strong[contains(text(), 'Total')]]" position="replace">
+            <td><strong>Monto Total</strong></td>
+        </xpath>
+        
     </template>
 </odoo>
