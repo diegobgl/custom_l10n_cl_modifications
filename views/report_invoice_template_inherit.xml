@@ -10,7 +10,16 @@
             <!-- Forzar el color del borde a rojo -->
             <attribute name="style" add="border-color: red !important;"/>
         </xpath>
+
+        <!-- Modificar el color del h6 a rojo dentro del segundo div con name='right-upper-side' -->
+        <xpath expr="(//div[@name='right-upper-side'])[2]//h6" position="attributes">
+            <attribute name="style" add="color: red !important;"/>
+        </xpath>
+
+
     </template>
+
+    
 
 
 
