@@ -1,4 +1,3 @@
-
 {
     'name': 'Custom L10n CL Red box',
     'version': '1.0',
