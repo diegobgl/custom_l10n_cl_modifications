@@ -1,6 +1,6 @@
 
 {
-    'name': 'Custom L10n CL Modifications',
+    'name': 'Custom L10n CL Red box',
     'version': '1.0',
     'category': 'Localization',
     'summary': 'Modificaciones personalizadas al reporte de factura de l10n_cl',
@@ -15,7 +15,7 @@
     'data': [
         'views/report_invoice_template_inherit.xml',
         'views/report_invoice_template_inherit_red_text.xml'
-        #'views/tax_totals_widget_inherit.xml'
+        'views/tax_totals_widget_inherit.xml'
     ],
     'installable': True,
     'auto_install': False,
