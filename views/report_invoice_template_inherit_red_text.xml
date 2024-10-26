@@ -3,7 +3,7 @@
         <!-- Herencia del template para cambiar el color del texto del h6 a rojo -->
     <template id="custom_header_inherit_color_change" inherit_id="l10n_cl.custom_header">
         <!-- Cambiar el color del h6 a rojo -->
-        <xpath expr="//div[@name='right-upper-side']//h6" position="attributes">
+        <xpath expr="//div[@name='right-upper-side']///h6" position="attributes">
             <attribute name="style" add="color: red !important;"/>
         </xpath>
     </template>
